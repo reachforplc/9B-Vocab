@@ -551,12 +551,13 @@ function toB64(str) { return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2}
 function fromB64(b64) { return decodeURIComponent(atob(b64).split('').map(c=>'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)).join('')); }
 
 function buildPayload() {
-  return { v:1, name:studentName, s:S.section, em:S.emoji, df:S.def, fb:S.fitb, so:S.sort, sn:S.sentences, sc:S.scramble, ti:S.tier, dn:S.done };
+  return { v:1, name:studentName, s:S.section, em:S.emoji, df:S.def, dwo:S.defWordOrder, ddo:S.defDefOrder, fb:S.fitb, so:S.sort, sn:S.sentences, sc:S.scramble, ti:S.tier, dn:S.done };
 }
 function applyPayload(d) {
   if (!d || d.v !== 1) return false;
   studentName = d.name||''; S.section=d.s||1;
-  S.emoji=d.em||{}; S.def=d.df||{}; S.fitb=d.fb||{}; S.sort=d.so||{}; S.sentences=d.sn||{};
+  S.emoji=d.em||{}; S.def=d.df||{}; S.defWordOrder=d.dwo||null; S.defDefOrder=d.ddo||null;
+  S.fitb=d.fb||{}; S.sort=d.so||{}; S.sentences=d.sn||{};
   S.scramble=d.sc||{}; S.tier=d.ti||'beginner';
   S.done=d.dn||{ emoji:false, def:false, fitb:false, sort:false, sentences:false };
   return true;
@@ -723,6 +724,9 @@ let defSelected = null; // the word currently selected from the bank
 
 function buildDefs() {
   WORDS.forEach(w => { if (!S.def[w.word]) S.def[w.word] = null; });
+  // Shuffle word bank and definition list once, store in state so order never changes
+  if (!S.defWordOrder) S.defWordOrder = shuffle(WORDS.map(w => w.word));
+  if (!S.defDefOrder)  S.defDefOrder  = shuffle(WORDS.map(w => w.word)); // stores word keys in shuffled order, used to render defs
 }
 
 function renderDefs() {
@@ -734,8 +738,9 @@ function renderDefs() {
   // Words placed so far: word -> definition
   const usedWords = new Set(Object.keys(S.def).filter(k => S.def[k] !== null));
 
-  // Word bank — terms as clickable chips
-  shuffle(WORDS).forEach(w => {
+  // Word bank — terms as clickable chips, in fixed shuffled order
+  const wordOrder = (S.defWordOrder || WORDS.map(w=>w.word)).map(name => WORDS.find(w=>w.word===name));
+  wordOrder.forEach(w => {
     const chip = document.createElement('div');
     const isUsed = usedWords.has(w.word);
     chip.className = 'def-word-chip' + (isUsed ? ' used' : '') + (defSelected===w.word ? ' selected' : '');
@@ -748,8 +753,9 @@ function renderDefs() {
     bank.appendChild(chip);
   });
 
-  // Definitions listed as click targets — shuffled once via WORDS order, but we shuffle the display
-  shuffle([...WORDS]).forEach(w => {
+  // Definitions in fixed shuffled order
+  const defOrder = (S.defDefOrder || WORDS.map(w=>w.word)).map(name => WORDS.find(w=>w.word===name));
+  defOrder.forEach(w => {
     const row = document.createElement('div');
     // Find which word (if any) is matched to this definition
     const matchedWord = Object.keys(S.def).find(k => S.def[k] === w.def) || null;
@@ -805,7 +811,10 @@ function checkDefs() {
 }
 
 function resetDefs() {
-  WORDS.forEach(w=>S.def[w.word]=null); defSelected=null; renderDefs();
+  WORDS.forEach(w=>S.def[w.word]=null); defSelected=null;
+  S.defWordOrder=shuffle(WORDS.map(w=>w.word));
+  S.defDefOrder=shuffle(WORDS.map(w=>w.word));
+  renderDefs();
   document.getElementById('defFeedback').className='feedback';
   document.getElementById('defScore').style.display='none'; autoSave();
 }
