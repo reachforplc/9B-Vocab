@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9B: Civil Rights Vocabulary</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue-50: #E6F1FB; --blue-100: #B5D4F4; --blue-600: #185FA5; --blue-800: #0C447C;
+  --green-50: #EAF3DE; --green-100: #C0DD97; --green-600: #3B6D11; --green-800: #27500A;
+  --amber-50: #FAEEDA; --amber-100: #FAC775; --amber-600: #854F0B; --amber-800: #633806;
+  --purple-50: #EEEDFE; --purple-100: #CECBF6; --purple-600: #534AB7; --purple-800: #3C3489;
+  --coral-50: #FAECE7; --coral-100: #F5C4B3; --coral-600: #993C1D; --coral-800: #712B13;
+  --gray-50: #F5F4F0; --gray-100: #ECEAE3; --gray-200: #D3D1C7; --gray-600: #5F5E5A; --gray-800: #2C2C2A;
+}
+
+body { font-family: 'DM Sans', sans-serif; background: #F5F4F0; color: #2C2C2A; min-height: 100vh; }
+
+/* ── WELCOME ── */
+#welcomeScreen {
+  min-height: 100vh; display: flex; align-items: center;
+  justify-content: center; padding: 24px; background: #2C2C2A;
+}
+.welcome-card {
+  background: #F5F4F0; border-radius: 16px; padding: 44px 38px;
+  max-width: 520px; width: 100%; text-align: center;
+}
+.welcome-card h1 { font-family: 'DM Serif Display', serif; font-size: 26px; font-weight: 400; margin-bottom: 4px; }
+.welcome-unit { font-size: 13px; color: #888780; margin-bottom: 6px; }
+.welcome-topic {
+  display: inline-block; background: #E6F1FB; color: #0C447C;
+  font-size: 13px; font-weight: 600; padding: 4px 14px;
+  border-radius: 100px; margin-bottom: 26px;
+}
+.welcome-steps {
+  text-align: left; background: white; border: 1px solid #D3D1C7;
+  border-radius: 10px; padding: 14px 18px; margin-bottom: 26px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.ws { display: flex; align-items: center; gap: 12px; font-size: 13px; color: #5F5E5A; }
+.wsn { width: 26px; height: 26px; border-radius: 50%; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.wsn-1 { background: #EEEDFE; color: #3C3489; }
+.wsn-2 { background: #E6F1FB; color: #0C447C; }
+.wsn-3 { background: #FAEEDA; color: #633806; }
+.wsn-4 { background: #EAF3DE; color: #27500A; }
+.wsn-5 { background: #FAECE7; color: #712B13; }
+.name-label { display: block; font-size: 13px; font-weight: 600; color: #5F5E5A; margin-bottom: 7px; text-align: left; }
+.name-row { display: flex; gap: 8px; }
+.name-row input { flex: 1; padding: 11px 14px; border-radius: 8px; border: 1.5px solid #D3D1C7; font-size: 15px; font-family: 'DM Sans', sans-serif; background: white; }
+.name-row input:focus { outline: none; border-color: #185FA5; }
+.err { font-size: 12px; color: #993C1D; margin-top: 6px; text-align: left; display: none; }
+.saved-note { font-size: 12px; color: #3B6D11; margin-top: 8px; text-align: left; }
+.restore-section { margin-top: 18px; padding-top: 16px; border-top: 1px solid #D3D1C7; }
+.restore-toggle { font-size: 13px; color: #185FA5; cursor: pointer; background: none; border: none; font-family: 'DM Sans', sans-serif; text-decoration: underline; }
+.restore-area { display: none; margin-top: 10px; }
+.restore-area textarea { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1.5px solid #D3D1C7; font-size: 12px; font-family: monospace; resize: vertical; min-height: 56px; background: white; }
+
+/* ── HEADER ── */
+header {
+  background: #2C2C2A; color: #F5F4F0; padding: 13px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; position: sticky; top: 0; z-index: 100; flex-wrap: wrap;
+}
+.hd-left h1 { font-family: 'DM Serif Display', serif; font-size: 17px; font-weight: 400; }
+.hd-left p { font-size: 11px; color: #B4B2A9; margin-top: 1px; }
+.hd-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.student-chip { background: #3a3a38; border: 1px solid #555553; border-radius: 100px; padding: 4px 13px; font-size: 12px; color: #D3D1C7; }
+.student-chip span { color: #F5F4F0; font-weight: 500; }
+.save-btn { padding: 5px 13px; border-radius: 100px; background: transparent; border: 1px solid #555553; color: #B4B2A9; font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+.save-btn:hover { border-color: #B4B2A9; color: #F5F4F0; }
+
+/* ── PROGRESS ── */
+.progress-nav { display: flex; gap: 3px; align-items: center; }
+.progress-step { display: flex; align-items: center; gap: 3px; }
+.step-circle { width: 23px; height: 23px; border-radius: 50%; border: 1.5px solid #444441; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: #888780; flex-shrink: 0; }
+.step-circle.done { background: #3B6D11; border-color: #3B6D11; color: white; }
+.step-circle.active { background: #F5F4F0; border-color: #F5F4F0; color: #2C2C2A; }
+.step-label { display: none; font-size: 10px; color: #888780; }
+.step-line { width: 10px; height: 1.5px; background: #444441; }
+@media (min-width: 860px) { .step-label { display: inline; } }
+
+/* ── SAVE MODAL ── */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
+.modal-overlay.open { display: flex; }
+.modal-box { background: white; border-radius: 14px; padding: 26px; max-width: 460px; width: 100%; position: relative; }
+.modal-box h3 { font-size: 16px; font-weight: 600; margin-bottom: 5px; }
+.modal-box p { font-size: 13px; color: #5F5E5A; line-height: 1.6; margin-bottom: 12px; }
+.save-code-box { background: #F5F4F0; border: 1px solid #D3D1C7; border-radius: 8px; padding: 10px 12px; font-family: monospace; font-size: 11px; word-break: break-all; line-height: 1.6; margin-bottom: 12px; user-select: all; }
+.modal-close { position: absolute; top: 12px; right: 14px; background: none; border: none; font-size: 19px; cursor: pointer; color: #888780; }
+
+/* ── MAIN ── */
+#appShell { display: none; }
+main { max-width: 980px; margin: 0 auto; padding: 22px 20px 80px; }
+.section { display: none; animation: fadeIn 0.3s ease; }
+.section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; } }
+
+.section-header { background: white; border: 1px solid #D3D1C7; border-radius: 12px; padding: 15px 20px; margin-bottom: 16px; display: flex; align-items: flex-start; gap: 13px; }
+.section-badge { width: 33px; height: 33px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0; }
+.badge-1 { background: #EEEDFE; color: #3C3489; }
+.badge-2 { background: #E6F1FB; color: #0C447C; }
+.badge-3 { background: #FAEEDA; color: #633806; }
+.badge-4 { background: #EAF3DE; color: #27500A; }
+.badge-5 { background: #FAECE7; color: #712B13; }
+.section-header h2 { font-size: 16px; font-weight: 600; margin-bottom: 3px; }
+.section-header p { font-size: 13px; color: #5F5E5A; line-height: 1.5; }
+.research-tag { display: inline-block; font-size: 11px; background: #F5F4F0; border: 1px solid #D3D1C7; color: #888780; padding: 2px 10px; border-radius: 100px; margin-top: 6px; }
+
+.hint-bar { background: #FAEEDA; border: 1px solid #FAC775; border-radius: 10px; padding: 9px 14px; font-size: 13px; color: #633806; margin-bottom: 14px; line-height: 1.5; }
+
+.controls { display: flex; gap: 9px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+.btn-primary { padding: 9px 19px; border-radius: 8px; border: none; background: #2C2C2A; color: #F5F4F0; font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; }
+.btn-primary:hover { background: #444441; }
+.btn-secondary { padding: 9px 15px; border-radius: 8px; border: 1px solid #D3D1C7; background: white; color: #5F5E5A; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; }
+.btn-secondary:hover { background: #F5F4F0; }
+.btn-next { padding: 9px 19px; border-radius: 8px; border: none; background: #185FA5; color: white; font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; display: none; }
+.btn-next:hover { background: #0C447C; }
+.score-pill { display: none; padding: 5px 12px; border-radius: 100px; font-size: 13px; font-weight: 600; background: #EAF3DE; color: #27500A; border: 1px solid #C0DD97; }
+.feedback { display: none; margin-top: 11px; padding: 10px 14px; border-radius: 10px; font-size: 14px; line-height: 1.6; }
+.feedback.show { display: block; }
+.feedback.great { background: #EAF3DE; color: #27500A; border: 1px solid #C0DD97; }
+.feedback.partial { background: #FAEEDA; color: #633806; border: 1px solid #FAC775; }
+.feedback.low { background: #FAECE7; color: #712B13; border: 1px solid #F5C4B3; }
+
+/* ── PART 1: EMOJI MATCH ── */
+.emoji-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.emoji-card {
+  background: white; border: 2px dashed #D3D1C7; border-radius: 12px;
+  padding: 14px 10px; text-align: center; cursor: pointer;
+  transition: border-color 0.15s, background 0.15s; min-height: 100px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+}
+.emoji-card .emoji-icon { font-size: 28px; line-height: 1; }
+.emoji-card .emoji-slot { font-size: 13px; color: #888780; font-style: italic; min-height: 20px; }
+.emoji-card.filled { border-style: solid; border-color: #B5D4F4; background: #E6F1FB; }
+.emoji-card.filled .emoji-slot { color: #0C447C; font-style: normal; font-weight: 500; font-size: 13px; }
+.emoji-card.correct { border-color: #C0DD97; background: #EAF3DE; }
+.emoji-card.correct .emoji-slot { color: #27500A; }
+.emoji-card.incorrect { border-color: #F5C4B3; background: #FAECE7; }
+.emoji-card.incorrect .emoji-slot { color: #712B13; }
+.emoji-card.drag-over { border-color: #378ADD; background: #E6F1FB44; }
+
+.word-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: white; border: 1px solid #D3D1C7; border-radius: 10px; margin-bottom: 14px; min-height: 50px; }
+.word-chip { padding: 7px 15px; border-radius: 100px; font-size: 13px; font-weight: 500; border: 1px solid #D3D1C7; background: white; cursor: grab; user-select: none; transition: box-shadow 0.12s, transform 0.12s, opacity 0.12s; }
+.word-chip:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.1); transform: translateY(-1px); }
+.word-chip:active { cursor: grabbing; }
+.word-chip.used { opacity: 0.3; pointer-events: none; }
+
+/* ── PART 2: DEFINITION MATCH ── */
+.def-match-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.def-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: center; }
+.def-word-box { background: white; border: 1px solid #D3D1C7; border-radius: 10px; padding: 12px 16px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.def-word-box .word-emoji { font-size: 18px; }
+.def-drop { background: #F5F4F0; border: 2px dashed #D3D1C7; border-radius: 10px; padding: 12px 14px; font-size: 13px; color: #888780; min-height: 50px; display: flex; align-items: center; transition: border-color 0.15s, background 0.15s; line-height: 1.5; cursor: pointer; }
+.def-drop.drag-over { border-color: #378ADD; background: #E6F1FB33; }
+.def-drop.filled { background: #E6F1FB; border-color: #B5D4F4; border-style: solid; color: #0C447C; font-style: italic; font-size: 13px; }
+.def-drop.correct { background: #EAF3DE; border-color: #C0DD97; color: #27500A; }
+.def-drop.incorrect { background: #FAECE7; border-color: #F5C4B3; color: #712B13; }
+
+.def-bank { background: white; border: 1px solid #D3D1C7; border-radius: 10px; padding: 12px; margin-bottom: 14px; }
+.def-bank-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #888780; margin-bottom: 9px; }
+.def-chips { display: flex; flex-wrap: wrap; gap: 7px; min-height: 36px; }
+.def-chip { padding: 7px 13px; border-radius: 8px; font-size: 12px; border: 1px solid #D3D1C7; background: white; cursor: grab; user-select: none; line-height: 1.4; transition: box-shadow 0.12s, transform 0.12s; }
+.def-chip:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.09); transform: translateY(-1px); }
+.def-chip:active { cursor: grabbing; }
+.def-chip.used { opacity: 0.3; pointer-events: none; }
+
+/* ── PART 3: FILL IN THE BLANK ── */
+.fitb-bank { background: white; border: 1px solid #D3D1C7; border-radius: 10px; padding: 12px 14px; margin-bottom: 14px; }
+.fitb-bank-inner { display: flex; flex-wrap: wrap; gap: 7px; min-height: 36px; }
+.fitb-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 14px; }
+.fitb-item { background: white; border: 1px solid #D3D1C7; border-radius: 12px; padding: 16px 18px; }
+.fitb-sentence { font-size: 15px; line-height: 2.6; }
+.fitb-blank {
+  display: inline-block; min-width: 130px; border: 2px dashed #D3D1C7;
+  padding: 4px 12px; margin: 0 4px; text-align: center;
+  font-weight: 600; color: #888780; border-radius: 8px; cursor: pointer;
+  transition: background 0.12s, border-color 0.12s; vertical-align: middle;
+}
+.fitb-blank:hover { border-color: #B5D4F4; background: #E6F1FB22; }
+.fitb-blank.ready { border-color: #378ADD; background: #E6F1FB44; color: #0C447C; }
+.fitb-blank.filled { border-style: solid; border-color: #B5D4F4; color: #0C447C; background: #E6F1FB; cursor: pointer; }
+.fitb-blank.filled:hover { border-color: #D3D1C7; background: #F5F4F0; color: #888780; }
+.fitb-blank.correct { border-color: #C0DD97; color: #27500A; background: #EAF3DE; cursor: default; }
+.fitb-blank.incorrect { border-color: #F5C4B3; color: #712B13; background: #FAECE7; }
+.fitb-chip { padding: 7px 16px; border-radius: 100px; font-size: 13px; font-weight: 500; border: 1.5px solid #D3D1C7; background: white; cursor: pointer; user-select: none; transition: box-shadow 0.12s, transform 0.12s, background 0.12s, border-color 0.12s; }
+.fitb-chip:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.09); transform: translateY(-1px); }
+.fitb-chip.selected { background: #2C2C2A; color: white; border-color: #2C2C2A; transform: scale(1.05); }
+.fitb-chip.used { opacity: 0.28; pointer-events: none; }
+
+/* ── PART 4: WORD SORT ── */
+.sort-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 14px; }
+.sort-col-header { font-size: 13px; font-weight: 600; text-align: center; padding: 9px; border-radius: 8px; margin-bottom: 7px; }
+.sort-drop { min-height: 120px; border: 2px dashed #D3D1C7; border-radius: 10px; padding: 10px; display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; background: white; transition: border-color 0.15s; }
+.sort-drop.drag-over { border-color: #378ADD; background: #E6F1FB22; }
+.sort-bank { background: white; border: 1px solid #D3D1C7; border-radius: 10px; padding: 12px; margin-bottom: 14px; }
+.sort-chip { padding: 7px 14px; border-radius: 100px; font-size: 13px; font-weight: 500; border: 1px solid #D3D1C7; background: white; cursor: grab; user-select: none; display: flex; align-items: center; gap: 6px; transition: box-shadow 0.12s, transform 0.12s; }
+.sort-chip:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.08); transform: translateY(-1px); }
+.sort-chip:active { cursor: grabbing; }
+
+/* ── PART 5: TIERED SENTENCE ACTIVITY ── */
+.tier-toggle { display: flex; gap: 8px; margin-bottom: 18px; align-items: center; flex-wrap: wrap; }
+.tier-toggle-label { font-size: 13px; color: #5F5E5A; font-weight: 500; margin-right: 4px; }
+.tier-btn { padding: 7px 18px; border-radius: 100px; font-size: 13px; font-family: 'DM Sans', sans-serif; border: 1.5px solid #D3D1C7; background: white; color: #5F5E5A; cursor: pointer; transition: all 0.15s; }
+.tier-btn.active-beginner { background: #EEEDFE; border-color: #CECBF6; color: #3C3489; font-weight: 600; }
+.tier-btn.active-intermediate { background: #E6F1FB; border-color: #B5D4F4; color: #0C447C; font-weight: 600; }
+.sf-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 14px; }
+.sf-item { background: white; border: 1px solid #D3D1C7; border-radius: 12px; padding: 16px 18px; }
+.sf-word { font-size: 13px; font-weight: 600; color: #534AB7; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.sf-completed-badge { font-size: 11px; background: #EAF3DE; color: #27500A; border: 1px solid #C0DD97; border-radius: 100px; padding: 2px 10px; margin-left: auto; }
+/* Scramble styles */
+.scramble-instruction { font-size: 13px; color: #5F5E5A; margin-bottom: 10px; }
+.scramble-dropzone { display: flex; flex-wrap: wrap; gap: 6px; min-height: 46px; border: 2px dashed #D3D1C7; border-radius: 10px; padding: 8px 10px; background: #F5F4F0; margin-bottom: 8px; align-items: center; transition: border-color 0.15s, background 0.15s; }
+.scramble-dropzone.drag-over { border-color: #534AB7; background: #EEEDFE33; }
+.scramble-dropzone.has-answer { border-color: #C0DD97; background: #EAF3DE22; }
+.scramble-bank { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 10px; background: white; border: 1px solid #D3D1C7; border-radius: 10px; min-height: 42px; }
+.scramble-bank.drag-over { background: #E6F1FB33; }
+.phrase-chip { padding: 6px 13px; border-radius: 8px; font-size: 13px; border: 1px solid #D3D1C7; background: white; cursor: grab; user-select: none; transition: box-shadow 0.12s, transform 0.12s; white-space: nowrap; }
+.phrase-chip:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.1); transform: translateY(-1px); }
+.phrase-chip:active { cursor: grabbing; }
+.phrase-chip.in-answer { background: #EEEDFE; border-color: #CECBF6; color: #3C3489; }
+.phrase-chip.keyword { background: #EEEDFE; border-color: #CECBF6; color: #3C3489; font-weight: 600; }
+.scramble-check { font-size: 12px; color: #3B6D11; margin-top: 4px; display: none; }
+.scramble-check.show { display: block; }
+/* Write styles */
+.sf-frame { font-size: 14px; color: #5F5E5A; margin-bottom: 10px; line-height: 1.6; font-style: italic; background: #F5F4F0; padding: 8px 12px; border-radius: 8px; border-left: 3px solid #CECBF6; }
+.sf-frame strong { color: #534AB7; font-style: normal; }
+.sf-input { width: 100%; padding: 10px 14px; border-radius: 8px; border: 1.5px solid #D3D1C7; font-size: 14px; font-family: 'DM Sans', sans-serif; background: white; resize: none; min-height: 58px; transition: border-color 0.15s; }
+.sf-input:focus { outline: none; border-color: #534AB7; }
+.sf-input.filled { border-color: #CECBF6; background: #EEEDFE11; }
+.sf-char-count { font-size: 11px; color: #888780; margin-top: 4px; text-align: right; }
+
+/* ── CERT ── */
+#certSection { text-align: center; padding: 8px 0; }
+.cert-name-row { display: flex; gap: 10px; align-items: center; justify-content: center; margin-bottom: 18px; flex-wrap: wrap; }
+.cert-name-row input { padding: 10px 15px; border-radius: 8px; border: 1px solid #D3D1C7; font-size: 15px; font-family: 'DM Sans', sans-serif; width: 270px; }
+.cert-name-row input:focus { outline: 2px solid #185FA5; border-color: #185FA5; }
+#certCanvas { border: 1px solid #D3D1C7; border-radius: 12px; max-width: 100%; margin: 0 auto 18px; display: block; }
+
+@media (max-width: 600px) {
+  header { padding: 11px 14px; }
+  .def-row { grid-template-columns: 1fr; }
+  main { padding: 12px 12px 60px; }
+  .welcome-card { padding: 28px 18px; }
+  .emoji-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ WELCOME ══ -->
+<div id="welcomeScreen">
+  <div class="welcome-card">
+    <h1>9B: Vocabulary</h1>
+    <p class="welcome-unit">ELL Level 1 · Civil Rights Unit</p>
+    <div class="welcome-topic">Civil Rights Movement</div>
+    <div class="welcome-steps">
+      <div class="ws"><div class="wsn wsn-1">1</div>Word &amp; Picture Match — connect words to images</div>
+      <div class="ws"><div class="wsn wsn-2">2</div>Definition Match — match each word to its meaning</div>
+      <div class="ws"><div class="wsn wsn-3">3</div>Fill in the Blank — use words in context sentences</div>
+      <div class="ws"><div class="wsn wsn-4">4</div>Word Sort — organize words by category</div>
+      <div class="ws"><div class="wsn wsn-5">5</div>Sentence Frames — write your own sentences</div>
+    </div>
+    <label class="name-label" for="welcomeName">Your full name</label>
+    <div class="name-row">
+      <input type="text" id="welcomeName" placeholder="First and last name..." autocomplete="name" onkeydown="if(event.key==='Enter') startLesson()">
+      <button class="btn-primary" onclick="startLesson()">Start →</button>
+    </div>
+    <div class="err" id="nameError">Please type your name before starting.</div>
+    <div id="savedNote"></div>
+    <div class="restore-section">
+      <button class="restore-toggle" onclick="toggleRestore()">Have a save code? Click here to restore your progress</button>
+      <div class="restore-area" id="restoreArea">
+        <textarea id="restoreCode" placeholder="Paste your save code here..."></textarea>
+        <div style="margin-top:8px;display:flex;gap:8px;">
+          <button class="btn-primary" onclick="restoreFromCode()">Restore progress</button>
+        </div>
+        <div class="err" id="restoreError">Invalid save code. Please check and try again.</div>
+      </div>
+    </div>
+    <div style="margin-top:22px;padding-top:12px;border-top:1px solid #ECEAE3;text-align:right;">
+      <button onclick="welcomeReset()" style="font-size:10px;color:#D3D1C7;background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:0.05em;">reset</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SAVE MODAL ══ -->
+<div class="modal-overlay" id="saveModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeSaveModal()">✕</button>
+    <h3>Save your progress</h3>
+    <p>Copy this code and save it — email it to yourself or paste it in Google Docs. Use it next time on the welcome screen to pick up where you left off.</p>
+    <div class="save-code-box" id="saveCodeDisplay"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="btn-primary" id="copyBtn" onclick="copySaveCode()">Copy code</button>
+      <button class="btn-secondary" onclick="closeSaveModal()">Close</button>
+    </div>
+    <p style="margin-top:10px;font-size:12px;color:#888780;">Progress also saves automatically in this browser.</p>
+  </div>
+</div>
+
+<!-- ══ APP ══ -->
+<div id="appShell">
+  <header>
+    <div class="hd-left">
+      <h1>9B: Civil Rights Vocabulary</h1>
+      <p>ELL Level 1 — Vocabulary Activities</p>
+    </div>
+    <div class="hd-right">
+      <div class="student-chip">Student: <span id="headerName">—</span></div>
+      <button class="save-btn" onclick="openSaveModal()">Save progress</button>
+      <div class="progress-nav">
+        <div class="progress-step"><div class="step-circle active" id="sc1">1</div><span class="step-label">Match</span></div>
+        <div class="step-line"></div>
+        <div class="progress-step"><div class="step-circle" id="sc2">2</div><span class="step-label">Definitions</span></div>
+        <div class="step-line"></div>
+        <div class="progress-step"><div class="step-circle" id="sc3">3</div><span class="step-label">Blanks</span></div>
+        <div class="step-line"></div>
+        <div class="progress-step"><div class="step-circle" id="sc4">4</div><span class="step-label">Sort</span></div>
+        <div class="step-line"></div>
+        <div class="progress-step"><div class="step-circle" id="sc5">5</div><span class="step-label">Sentences</span></div>
+        <div class="step-line"></div>
+        <div class="progress-step"><div class="step-circle" id="sc6">★</div><span class="step-label">Certificate</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- PART 1: EMOJI/PICTURE MATCH -->
+    <div class="section active" id="sec1">
+      <div class="section-header">
+        <div class="section-badge badge-1">1</div>
+        <div>
+          <h2>Word &amp; Picture Match</h2>
+          <p>Drag each word to the correct picture. Use the emoji as a clue!</p>
+          <span class="research-tag">First exposure — building word-image connections (Nation, 2001)</span>
+        </div>
+      </div>
+      <div class="hint-bar">Look at each picture (emoji). Drag the correct word from the word bank below to match it.</div>
+      <div class="word-chips" id="emojiWordBank"
+        ondragover="event.preventDefault()" ondrop="emojiChipDrop(event, null)"></div>
+      <div class="emoji-grid" id="emojiGrid"></div>
+      <div class="controls">
+        <button class="btn-primary" onclick="checkEmoji()">Check my answers</button>
+        <button class="btn-secondary" onclick="resetEmoji()">Reset</button>
+        <span class="score-pill" id="emojiScore"></span>
+      </div>
+      <div class="feedback" id="emojiFeedback"></div>
+      <div class="controls" style="margin-top:12px;">
+        <button class="btn-next" id="btn1to2" onclick="goTo(2)">Next: Definition Match →</button>
+      </div>
+    </div>
+
+    <!-- PART 2: DEFINITION MATCH -->
+    <div class="section" id="sec2">
+      <div class="section-header">
+        <div class="section-badge badge-2">2</div>
+        <div>
+          <h2>Definition Match</h2>
+          <p>Match each vocabulary word to its definition.</p>
+          <span class="research-tag">Deepening meaning — receptive recognition (Beck et al., 2002)</span>
+        </div>
+      </div>
+      <div class="hint-bar">Drag each definition from the box below and drop it next to the correct word.</div>
+      <div class="def-bank">
+        <div class="def-bank-label">Definitions — drag to the correct word</div>
+        <div class="def-chips" id="defBank"></div>
+      </div>
+      <div class="def-match-grid" id="defMatchGrid"></div>
+      <div class="controls">
+        <button class="btn-primary" onclick="checkDefs()">Check my answers</button>
+        <button class="btn-secondary" onclick="resetDefs()">Reset</button>
+        <span class="score-pill" id="defScore"></span>
+      </div>
+      <div class="feedback" id="defFeedback"></div>
+      <div class="controls" style="margin-top:12px;">
+        <button class="btn-next" id="btn2to3" onclick="goTo(3)">Next: Fill in the Blank →</button>
+      </div>
+    </div>
+
+    <!-- PART 3: FILL IN THE BLANK -->
+    <div class="section" id="sec3">
+      <div class="section-header">
+        <div class="section-badge badge-3">3</div>
+        <div>
+          <h2>Fill in the Blank</h2>
+          <p>Choose the correct word to complete each sentence.</p>
+          <span class="research-tag">Contextual understanding — comprehensible input (Krashen, 1985)</span>
+        </div>
+      </div>
+      <div class="hint-bar">Click a word in the bank to select it (it will turn dark), then click the blank where it belongs. Click a filled blank to put the word back.</div>
+      <div class="fitb-bank">
+        <div class="def-bank-label">Word bank — drag each word to a blank</div>
+        <div class="fitb-bank-inner" id="fitbBankInner"></div>
+      </div>
+      <div class="fitb-list" id="fitbList"></div>
+      <div class="controls">
+        <button class="btn-primary" onclick="checkFitb()">Check my answers</button>
+        <button class="btn-secondary" onclick="resetFitb()">Reset</button>
+        <span class="score-pill" id="fitbScore"></span>
+      </div>
+      <div class="feedback" id="fitbFeedback"></div>
+      <div class="controls" style="margin-top:12px;">
+        <button class="btn-next" id="btn3to4" onclick="goTo(4)">Next: Word Sort →</button>
+      </div>
+    </div>
+
+    <!-- PART 4: WORD SORT -->
+    <div class="section" id="sec4">
+      <div class="section-header">
+        <div class="section-badge badge-4">4</div>
+        <div>
+          <h2>Word Sort</h2>
+          <p>Sort each word into the correct category.</p>
+          <span class="research-tag">Semantic networks — concept-based categorization (Graves, 2006)</span>
+        </div>
+      </div>
+      <div class="hint-bar">Think about what each word means. Drag it to the category that fits best.</div>
+      <div class="sort-bank">
+        <div class="def-bank-label">Words — drag to a category</div>
+        <div class="def-chips" id="sortBank"></div>
+      </div>
+      <div class="sort-board" id="sortBoard"></div>
+      <div class="controls">
+        <button class="btn-primary" onclick="checkSort()">Check my answers</button>
+        <button class="btn-secondary" onclick="resetSort()">Reset</button>
+        <span class="score-pill" id="sortScore"></span>
+      </div>
+      <div class="feedback" id="sortFeedback"></div>
+      <div class="controls" style="margin-top:12px;">
+        <button class="btn-next" id="btn4to5" onclick="goTo(5)">Next: Sentence Frames →</button>
+      </div>
+    </div>
+
+    <!-- PART 5: TIERED SENTENCE ACTIVITY -->
+    <div class="section" id="sec5">
+      <div class="section-header">
+        <div class="section-badge badge-5">5</div>
+        <div>
+          <h2>Sentence Activity</h2>
+          <p>Choose your level. Beginners arrange scrambled phrases. Intermediate students complete a sentence frame. Both count for your certificate!</p>
+          <span class="research-tag">Tiered productive output — scaffolded language production (Gibbons, 2002; Swain, 1985)</span>
+        </div>
+      </div>
+      <div class="hint-bar" id="sfHintBar">Choose your level below, then complete an activity for each vocabulary word.</div>
+      <div class="tier-toggle">
+        <span class="tier-toggle-label">My level:</span>
+        <button class="tier-btn active-beginner" id="tierBeginner" onclick="setTier('beginner')">Beginner — arrange phrases</button>
+        <button class="tier-btn" id="tierIntermediate" onclick="setTier('intermediate')">Intermediate — write sentences</button>
+      </div>
+      <div class="sf-list" id="sfList"></div>
+      <div class="controls">
+        <button class="btn-primary" onclick="checkSentences()">Check my work</button>
+        <button class="btn-next" id="btn5to6" onclick="goTo(6)">Get My Certificate →</button>
+      </div>
+      <div class="feedback" id="sfFeedback"></div>
+    </div>
+
+    <!-- CERT -->
+    <div class="section" id="sec6">
+      <div class="section-header">
+        <div class="section-badge" style="background:#FAEEDA;color:#633806;font-size:17px;">★</div>
+        <div>
+          <h2>You finished Unit 9B Vocabulary!</h2>
+          <p>Download your certificate and upload it to Canvas as evidence of completion.</p>
+        </div>
+      </div>
+      <div id="certSection">
+        <div class="cert-name-row">
+          <input type="text" id="studentNameCert" placeholder="Your name..." oninput="drawCert()">
+          <button class="btn-primary" onclick="downloadCert()">Download Certificate</button>
+        </div>
+        <canvas id="certCanvas" width="860" height="640"></canvas>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+/* ════════════════════════════════
+   VOCABULARY DATA
+════════════════════════════════ */
+const WORDS = [
+  { word: 'Civil Rights',   emoji: '🗽', def: 'Basic rights all people should have',              category: 'Rights & Ideas',  frame: 'Civil rights are important because ___.',             fitb: 0 },
+  { word: 'Segregation',    emoji: '⬛⬜', def: 'Keeping people apart because of race',             category: 'Problems',        frame: 'Segregation was wrong because ___.',                  fitb: 1 },
+  { word: 'Integration',    emoji: '🤝', def: 'Bringing people of different races together',      category: 'Rights & Ideas',  frame: 'Integration helped people by ___.',                   fitb: 2 },
+  { word: 'Nonviolence',    emoji: '🕊️', def: 'Not using violence to make change',               category: 'Rights & Ideas',  frame: 'Nonviolence means that protesters ___.',              fitb: 3 },
+  { word: 'Discrimination', emoji: '🙅', def: 'Unfair treatment because of race or other differences', category: 'Problems',   frame: 'Discrimination is unfair because ___.',               fitb: 4 },
+  { word: 'Boycott',        emoji: '🚲', def: 'Refusing to use something to protest',             category: 'Actions',         frame: 'People used a boycott to show that ___.',             fitb: 5 },
+  { word: 'March',          emoji: '🚶', def: 'Walking together to ask for change',               category: 'Actions',         frame: 'People went on a march because ___.',                 fitb: 6 },
+  { word: 'Sit-in',         emoji: '🪑', def: 'Sitting in a place and refusing to leave',         category: 'Actions',         frame: 'A sit-in was a way to protest by ___.',               fitb: 7 },
+  { word: 'Media',          emoji: '📺', def: 'TV, photos, or newspapers that show news',         category: 'Tools',           frame: 'The media helped the Civil Rights Movement by ___.',  fitb: 8 },
+  { word: 'Speech',         emoji: '🗣️', def: 'A talk that shares ideas with a group',           category: 'Tools',           frame: 'A speech can change people\'s minds when ___.',       fitb: 9 },
+];
+
+const CATEGORIES = ['Rights & Ideas', 'Problems', 'Actions', 'Tools'];
+const CAT_COLORS = {
+  'Rights & Ideas': { bg: '#E6F1FB', border: '#B5D4F4', text: '#0C447C', hdr: '#185FA5' },
+  'Problems':       { bg: '#FAECE7', border: '#F5C4B3', text: '#712B13', hdr: '#993C1D' },
+  'Actions':        { bg: '#EAF3DE', border: '#C0DD97', text: '#27500A', hdr: '#3B6D11' },
+  'Tools':          { bg: '#FAEEDA', border: '#FAC775', text: '#633806', hdr: '#854F0B' },
+};
+
+const FITB_SENTENCES = [
+  { sentence: 'Dr. King fought for the ___ of African Americans.', answer: 'Civil Rights' },
+  { sentence: 'Schools were once divided by race. This was called ___.', answer: 'Segregation' },
+  { sentence: 'After years of protest, ___ brought Black and white students into the same schools.', answer: 'Integration' },
+  { sentence: 'Dr. King believed in ___, which means protesting peacefully.', answer: 'Nonviolence' },
+  { sentence: 'Refusing to serve someone at a lunch counter because of their race is an example of ___.', answer: 'Discrimination' },
+  { sentence: 'African Americans refused to ride the buses in Montgomery. This was called a ___.', answer: 'Boycott' },
+  { sentence: 'Thousands of people did a ___ on Washington D.C. to ask for equal rights.', answer: 'March' },
+  { sentence: 'Students entered a whites-only restaurant and did a ___ to protest unfair rules.', answer: 'Sit-in' },
+  { sentence: 'Reporters and cameras — also called the ___ — helped the world see the protests.', answer: 'Media' },
+  { sentence: 'Dr. King gave a famous ___ in which he said "I have a dream."', answer: 'Speech' },
+];
+
+/* ════════════════════════════════
+   STATE
+════════════════════════════════ */
+let studentName = '';
+const S = {
+  section: 1,
+  emoji: {},    // word -> slotWord (filled emoji card)
+  def: {},      // word -> definition text placed
+  fitb: {},     // sentenceIdx -> word placed
+  sort: {},     // word -> category
+  sentences: {}, // word -> student written sentence (intermediate)
+  scramble: {}, // word -> array of phrases in student order (beginner)
+  tier: 'beginner',
+  done: { emoji: false, def: false, fitb: false, sort: false, sentences: false }
+};
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+
+/* ════════════════════════════════
+   SAVE / RESTORE
+════════════════════════════════ */
+const SAVE_KEY = '9b_vocab_v1';
+
+function toB64(str) { return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,(_,p)=>String.fromCharCode('0x'+p))); }
+function fromB64(b64) { return decodeURIComponent(atob(b64).split('').map(c=>'%'+('00'+c.charCodeAt(0).toString(16)).slice(-2)).join('')); }
+
+function buildPayload() {
+  return { v:1, name:studentName, s:S.section, em:S.emoji, df:S.def, fb:S.fitb, so:S.sort, sn:S.sentences, sc:S.scramble, ti:S.tier, dn:S.done };
+}
+function applyPayload(d) {
+  if (!d || d.v !== 1) return false;
+  studentName = d.name||''; S.section=d.s||1;
+  S.emoji=d.em||{}; S.def=d.df||{}; S.fitb=d.fb||{}; S.sort=d.so||{}; S.sentences=d.sn||{};
+  S.scramble=d.sc||{}; S.tier=d.ti||'beginner';
+  S.done=d.dn||{ emoji:false, def:false, fitb:false, sort:false, sentences:false };
+  return true;
+}
+function autoSave() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(buildPayload())); } catch(e){} }
+
+function openSaveModal() {
+  try {
+    autoSave();
+    document.getElementById('saveCodeDisplay').textContent = toB64(JSON.stringify(buildPayload()));
+    document.getElementById('saveModal').classList.add('open');
+  } catch(e) { alert('Could not generate save code. Please try again.'); }
+}
+function closeSaveModal() { document.getElementById('saveModal').classList.remove('open'); }
+function copySaveCode() {
+  const text = document.getElementById('saveCodeDisplay').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const b = document.getElementById('copyBtn'); b.textContent='Copied!'; setTimeout(()=>b.textContent='Copy code',2000);
+  }).catch(() => { const el=document.getElementById('saveCodeDisplay'); const r=document.createRange(); r.selectNode(el); window.getSelection().removeAllRanges(); window.getSelection().addRange(r); });
+}
+function restoreFromCode() {
+  try {
+    const d = JSON.parse(fromB64(document.getElementById('restoreCode').value.trim()));
+    if (!applyPayload(d)) throw new Error();
+    document.getElementById('welcomeName').value = studentName;
+    launchApp();
+  } catch(e) { document.getElementById('restoreError').style.display='block'; }
+}
+function toggleRestore() { const a=document.getElementById('restoreArea'); a.style.display=a.style.display==='block'?'none':'block'; }
+
+window.addEventListener('load', () => {
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return;
+    const d = JSON.parse(raw);
+    if (d && d.name && d.v===1) {
+      applyPayload(d);
+      document.getElementById('welcomeName').value = studentName;
+      const note = document.getElementById('savedNote');
+      note.className = 'saved-note';
+      note.textContent = '✓ Progress found for ' + studentName + '. Press Start to continue.';
+    }
+  } catch(e) {}
+});
+
+/* ════════════════════════════════
+   WELCOME & LAUNCH
+════════════════════════════════ */
+function startLesson() {
+  const v = document.getElementById('welcomeName').value.trim();
+  if (!v) { document.getElementById('nameError').style.display='block'; return; }
+  studentName = v; launchApp();
+}
+function launchApp() {
+  document.getElementById('welcomeScreen').style.display='none';
+  document.getElementById('appShell').style.display='block';
+  document.getElementById('headerName').textContent = studentName;
+  document.getElementById('studentNameCert').value = studentName;
+  buildEmoji(); buildDefs(); buildFitb(); buildSort(); buildSentences();
+  restoreUI(); autoSave();
+}
+
+/* ════════════════════════════════
+   NAVIGATION
+════════════════════════════════ */
+function goTo(n) {
+  S.section = n;
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('sec'+n).classList.add('active');
+  [1,2,3,4,5,6].forEach(i => {
+    const el=document.getElementById('sc'+i); el.className='step-circle';
+    if(i<n) el.classList.add('done'); else if(i===n) el.classList.add('active');
+  });
+  if (n===6) { document.getElementById('studentNameCert').value=studentName; setTimeout(drawCert,120); }
+  window.scrollTo({top:0,behavior:'smooth'}); autoSave();
+}
+
+function restoreUI() {
+  goTo(S.section);
+  renderEmoji(); renderDefs(); renderFitb(); renderSort(); renderSentences();
+  if (S.done.emoji) document.getElementById('btn1to2').style.display='inline-block';
+  if (S.done.def)   document.getElementById('btn2to3').style.display='inline-block';
+  if (S.done.fitb)  document.getElementById('btn3to4').style.display='inline-block';
+  if (S.done.sort)  document.getElementById('btn4to5').style.display='inline-block';
+  if (S.done.sentences) document.getElementById('btn5to6').style.display='inline-block';
+}
+
+/* ════════════════════════════════
+   PART 1: EMOJI MATCH
+════════════════════════════════ */
+let emojiDrag = null;
+
+function buildEmoji() {
+  WORDS.forEach(w => { if (!S.emoji[w.word]) S.emoji[w.word] = null; });
+}
+
+function renderEmoji() {
+  const bank = document.getElementById('emojiWordBank');
+  const grid = document.getElementById('emojiGrid');
+  if (!bank || !grid) return;
+  bank.innerHTML = ''; grid.innerHTML = '';
+
+  const placed = new Set(Object.values(S.emoji).filter(Boolean));
+  shuffle(WORDS).forEach(w => {
+    const chip = document.createElement('div');
+    chip.className = 'word-chip' + (placed.has(w.word) ? ' used' : '');
+    chip.textContent = w.word; chip.draggable = true;
+    chip.ondragstart = () => { emojiDrag = w.word; };
+    bank.appendChild(chip);
+  });
+
+  WORDS.forEach(w => {
+    const card = document.createElement('div');
+    card.className = 'emoji-card' + (S.emoji[w.word] ? ' filled' : '');
+    card.innerHTML = `<div class="emoji-icon">${w.emoji}</div><div class="emoji-slot">${S.emoji[w.word] || 'drop word here'}</div>`;
+    card.ondragover = e => { e.preventDefault(); card.classList.add('drag-over'); };
+    card.ondragleave = () => card.classList.remove('drag-over');
+    card.ondrop = e => { e.preventDefault(); card.classList.remove('drag-over'); emojiChipDrop(e, w.word); };
+    grid.appendChild(card);
+  });
+}
+
+function emojiChipDrop(e, targetWord) {
+  if (!emojiDrag) return;
+  if (targetWord === null) {
+    // dropped back to bank — find which slot had this word and clear it
+    Object.keys(S.emoji).forEach(k => { if (S.emoji[k] === emojiDrag) S.emoji[k] = null; });
+  } else {
+    // clear from any previous slot
+    Object.keys(S.emoji).forEach(k => { if (S.emoji[k] === emojiDrag) S.emoji[k] = null; });
+    S.emoji[targetWord] = emojiDrag;
+  }
+  emojiDrag = null; renderEmoji(); autoSave();
+}
+
+function checkEmoji() {
+  let correct = 0;
+  WORDS.forEach(w => { if (S.emoji[w.word] === w.word) correct++; });
+  const total = WORDS.length;
+  const pill = document.getElementById('emojiScore');
+  pill.textContent = correct+' / '+total+' correct'; pill.style.display='inline-block';
+  const fb = document.getElementById('emojiFeedback');
+  if (correct >= Math.ceil(total * 0.7)) {
+    fb.textContent = correct===total ? 'Perfect! You matched all the words to their pictures!' : 'Great job! '+correct+'/'+total+' correct. You can move on!';
+    fb.className='feedback show great'; S.done.emoji=true;
+    document.getElementById('btn1to2').style.display='inline-block';
+  } else {
+    fb.textContent = 'Keep trying! Look at each emoji carefully — it gives you a clue about the word\'s meaning.';
+    fb.className='feedback show partial';
+  }
+  autoSave();
+}
+
+function resetEmoji() {
+  WORDS.forEach(w => S.emoji[w.word]=null); renderEmoji();
+  document.getElementById('emojiFeedback').className='feedback';
+  document.getElementById('emojiScore').style.display='none'; autoSave();
+}
+
+/* ════════════════════════════════
+   PART 2: DEFINITION MATCH
+════════════════════════════════ */
+let defDrag = null;
+
+function buildDefs() {
+  WORDS.forEach(w => { if (!S.def[w.word]) S.def[w.word] = null; });
+}
+
+function renderDefs() {
+  const bank = document.getElementById('defBank');
+  const grid = document.getElementById('defMatchGrid');
+  if (!bank || !grid) return;
+  bank.innerHTML=''; grid.innerHTML='';
+
+  const placed = new Set(Object.values(S.def).filter(Boolean));
+  shuffle(WORDS).forEach(w => {
+    const chip = document.createElement('div');
+    chip.className='def-chip'+(placed.has(w.def)?' used':'');
+    chip.textContent=w.def; chip.draggable=true;
+    chip.ondragstart=()=>{defDrag=w.def;};
+    bank.appendChild(chip);
+  });
+
+  WORDS.forEach(w => {
+    const row = document.createElement('div');
+    row.className='def-row';
+    const wordBox = document.createElement('div');
+    wordBox.className='def-word-box';
+    wordBox.innerHTML=`<span class="word-emoji">${w.emoji}</span><span>${w.word}</span>`;
+    const drop = document.createElement('div');
+    drop.className='def-drop'+(S.def[w.word]?' filled':'');
+    drop.textContent=S.def[w.word]||'Drop definition here...';
+    drop.ondragover=e=>{e.preventDefault();drop.classList.add('drag-over');};
+    drop.ondragleave=()=>drop.classList.remove('drag-over');
+    drop.ondrop=e=>{
+      e.preventDefault(); drop.classList.remove('drag-over');
+      if(!defDrag)return;
+      Object.keys(S.def).forEach(k=>{if(S.def[k]===defDrag)S.def[k]=null;});
+      S.def[w.word]=defDrag; defDrag=null; renderDefs(); autoSave();
+    };
+    // click to remove
+    drop.onclick=()=>{if(S.def[w.word]){S.def[w.word]=null;renderDefs();autoSave();}};
+    row.appendChild(wordBox); row.appendChild(drop); grid.appendChild(row);
+  });
+}
+
+function checkDefs() {
+  let correct=0;
+  WORDS.forEach(w=>{if(S.def[w.word]===w.def)correct++;});
+  const total=WORDS.length, pill=document.getElementById('defScore'), fb=document.getElementById('defFeedback');
+  pill.textContent=correct+' / '+total+' correct'; pill.style.display='inline-block';
+  if(correct>=Math.ceil(total*0.7)){
+    fb.textContent=correct===total?'Excellent! You matched every word to its definition!':'Great work! '+correct+'/'+total+' — you can move on!';
+    fb.className='feedback show great'; S.done.def=true;
+    document.getElementById('btn2to3').style.display='inline-block';
+  } else {
+    fb.textContent='Keep going! Re-read each definition carefully. Some words have similar meanings — look for the most important difference.';
+    fb.className='feedback show partial';
+  }
+  autoSave();
+}
+
+function resetDefs() {
+  WORDS.forEach(w=>S.def[w.word]=null); renderDefs();
+  document.getElementById('defFeedback').className='feedback';
+  document.getElementById('defScore').style.display='none'; autoSave();
+}
+
+/* ════════════════════════════════
+   PART 3: FILL IN THE BLANK (drag-and-drop)
+════════════════════════════════ */
+let fitbSelected = null; // the word currently selected from the bank
+
+function buildFitb() {
+  FITB_SENTENCES.forEach((_,i)=>{ if(S.fitb[i]===undefined) S.fitb[i]=null; });
+}
+
+function renderFitb() {
+  const list = document.getElementById('fitbList');
+  const bankInner = document.getElementById('fitbBankInner');
+  if (!list || !bankInner) return;
+  list.innerHTML=''; bankInner.innerHTML='';
+
+  const usedWords = new Set(Object.values(S.fitb).filter(Boolean));
+
+  // Word bank chips — click to select
+  shuffle(WORDS).forEach(w => {
+    const chip = document.createElement('div');
+    const isUsed = usedWords.has(w.word);
+    chip.className = 'fitb-chip' + (isUsed ? ' used' : '') + (fitbSelected===w.word ? ' selected' : '');
+    chip.textContent = w.word;
+    chip.onclick = () => {
+      if (isUsed) return;
+      fitbSelected = fitbSelected === w.word ? null : w.word;
+      renderFitb();
+    };
+    bankInner.appendChild(chip);
+  });
+
+  // Sentences with clickable blanks
+  FITB_SENTENCES.forEach((item, i) => {
+    const div = document.createElement('div'); div.className = 'fitb-item';
+    const parts = item.sentence.split('___');
+    const filled = S.fitb[i];
+    const sentDiv = document.createElement('div'); sentDiv.className = 'fitb-sentence';
+    sentDiv.appendChild(document.createTextNode(parts[0]));
+
+    const blank = document.createElement('span');
+    let cls = 'fitb-blank';
+    if (filled) cls += ' filled';
+    else if (fitbSelected) cls += ' ready';
+    blank.className = cls;
+    blank.textContent = filled || (fitbSelected ? 'click to place' : 'click a word first');
+
+    blank.onclick = () => {
+      if (fitbSelected) {
+        // Place selected word into this blank
+        // If blank already had a word, return it to bank
+        S.fitb[i] = fitbSelected;
+        fitbSelected = null;
+        renderFitb(); autoSave();
+      } else if (filled) {
+        // Click a filled blank to return its word to the bank
+        S.fitb[i] = null;
+        renderFitb(); autoSave();
+      }
+    };
+
+    sentDiv.appendChild(blank);
+    if (parts[1]) sentDiv.appendChild(document.createTextNode(parts[1]));
+    div.appendChild(sentDiv);
+    list.appendChild(div);
+  });
+}
+
+function checkFitb() {
+  let correct=0;
+  FITB_SENTENCES.forEach((item,i)=>{if(S.fitb[i]===item.answer)correct++;});
+  const total=FITB_SENTENCES.length, pill=document.getElementById('fitbScore'), fb=document.getElementById('fitbFeedback');
+  pill.textContent=correct+' / '+total+' correct'; pill.style.display='inline-block';
+  if(correct>=Math.ceil(total*0.7)){
+    fb.textContent=correct===total?'Perfect! You used every vocabulary word correctly in context!':'Well done! '+correct+'/'+total+' correct. You can continue!';
+    fb.className='feedback show great'; S.done.fitb=true;
+    document.getElementById('btn3to4').style.display='inline-block';
+  } else if(correct>=4){
+    fb.textContent='Getting there! You need at least '+Math.ceil(total*0.7)+' correct. Re-read the sentence — the context gives you clues about which word fits.';
+    fb.className='feedback show partial';
+  } else {
+    fb.textContent='Try again! Click a word to select it, then click the blank where it belongs. Click a filled blank to return the word.';
+    fb.className='feedback show low';
+  }
+  autoSave();
+}
+
+function resetFitb() {
+  FITB_SENTENCES.forEach((_,i)=>S.fitb[i]=null); fitbSelected=null; renderFitb();
+  document.getElementById('fitbFeedback').className='feedback';
+  document.getElementById('fitbScore').style.display='none'; autoSave();
+}
+
+/* ════════════════════════════════
+   PART 4: WORD SORT
+════════════════════════════════ */
+let sortDrag = null;
+
+function buildSort() {
+  WORDS.forEach(w=>{ if(!S.sort[w.word]) S.sort[w.word]='bank'; });
+}
+
+function renderSort() {
+  const bank=document.getElementById('sortBank'), board=document.getElementById('sortBoard');
+  if(!bank||!board)return;
+  bank.innerHTML=''; board.innerHTML='';
+
+  // bank chips
+  shuffle(WORDS).forEach(w=>{
+    if(S.sort[w.word]!=='bank')return;
+    const chip=document.createElement('div'); chip.className='def-chip';
+    chip.innerHTML=`${w.emoji} ${w.word}`; chip.draggable=true;
+    chip.ondragstart=()=>{sortDrag=w.word;};
+    bank.appendChild(chip);
+  });
+
+  // category columns
+  CATEGORIES.forEach(cat=>{
+    const col=document.createElement('div');
+    const c=CAT_COLORS[cat];
+    const hdr=document.createElement('div'); hdr.className='sort-col-header';
+    hdr.style.cssText=`background:${c.bg};color:${c.hdr};`;
+    hdr.textContent=cat; col.appendChild(hdr);
+    const drop=document.createElement('div'); drop.className='sort-drop';
+    drop.ondragover=e=>{e.preventDefault();drop.classList.add('drag-over');};
+    drop.ondragleave=()=>drop.classList.remove('drag-over');
+    drop.ondrop=e=>{
+      e.preventDefault(); drop.classList.remove('drag-over');
+      if(!sortDrag)return; S.sort[sortDrag]=cat; sortDrag=null; renderSort(); autoSave();
+    };
+    // chips already in this column
+    WORDS.filter(w=>S.sort[w.word]===cat).forEach(w=>{
+      const chip=document.createElement('div'); chip.className='def-chip';
+      chip.style.cssText=`background:${c.bg};border-color:${c.border};color:${c.text};`;
+      chip.innerHTML=`${w.emoji} ${w.word}`; chip.draggable=true;
+      chip.ondragstart=()=>{sortDrag=w.word;};
+      drop.appendChild(chip);
+    });
+    col.appendChild(drop); board.appendChild(col);
+  });
+
+  // bank drop target
+  const bankEl=document.getElementById('sortBank');
+  bankEl.ondragover=e=>e.preventDefault();
+  bankEl.ondrop=e=>{
+    e.preventDefault(); if(!sortDrag)return;
+    S.sort[sortDrag]='bank'; sortDrag=null; renderSort(); autoSave();
+  };
+}
+
+function checkSort() {
+  let correct=0;
+  WORDS.forEach(w=>{if(S.sort[w.word]===w.category)correct++;});
+  const total=WORDS.length, pill=document.getElementById('sortScore'), fb=document.getElementById('sortFeedback');
+  pill.textContent=correct+' / '+total+' correct'; pill.style.display='inline-block';
+  if(correct>=Math.ceil(total*0.7)){
+    fb.textContent=correct===total?'Perfect! You sorted all the words correctly!':'Great job! '+correct+'/'+total+' correct. You can move on!';
+    fb.className='feedback show great'; S.done.sort=true;
+    document.getElementById('btn4to5').style.display='inline-block';
+  } else {
+    fb.textContent='Think about what each word means. "Rights & Ideas" = concepts. "Problems" = bad things. "Actions" = things people did. "Tools" = things used to communicate.';
+    fb.className='feedback show partial';
+  }
+  autoSave();
+}
+
+function resetSort() {
+  WORDS.forEach(w=>S.sort[w.word]='bank'); renderSort();
+  document.getElementById('sortFeedback').className='feedback';
+  document.getElementById('sortScore').style.display='none'; autoSave();
+}
+
+/* ════════════════════════════════
+   PART 5: TIERED SENTENCE ACTIVITY
+════════════════════════════════ */
+
+// Scramble data — phrase chunks for each word (answer order)
+const SCRAMBLES = {
+  'Civil Rights':   ['Civil rights', 'are the basic rights', 'that all people', 'should have.'],
+  'Segregation':    ['Segregation kept', 'Black and white people', 'in separate places', 'because of race.'],
+  'Integration':    ['Integration', 'brought people', 'of different races', 'together in schools.'],
+  'Nonviolence':    ['Dr. King believed', 'in nonviolence —', 'protesting peacefully', 'without fighting.'],
+  'Discrimination': ['Discrimination', 'means treating people', 'unfairly', 'because of who they are.'],
+  'Boycott':        ['African Americans', 'used a boycott', 'to refuse riding buses', 'and demand change.'],
+  'March':          ['People went on a march', 'to walk together', 'and ask the government', 'for equal rights.'],
+  'Sit-in':         ['Students did a sit-in', 'by sitting', 'at a whites-only counter', 'and refusing to leave.'],
+  'Media':          ['The media', 'showed photos and videos', 'of the protests', 'to the whole country.'],
+  'Speech':         ['Dr. King gave a speech', 'called "I Have a Dream"', 'to share his vision', 'of equality for all.'],
+};
+
+// State: scramble order per word (array of phrase indices), tier choice
+// S.sentences[word] = written text (intermediate)
+// S.scramble[word]  = array of phrases in student's current order ([] = not started)
+// S.tier = 'beginner' | 'intermediate'
+
+let scrambleDrag = null; // { word, phrase, fromZone: 'answer'|'bank', fromIdx }
+
+function buildSentences() {
+  if (!S.tier) S.tier = 'beginner';
+  WORDS.forEach(w => {
+    if (!S.sentences[w.word]) S.sentences[w.word] = '';
+    if (!S.scramble) S.scramble = {};
+    if (!S.scramble[w.word]) S.scramble[w.word] = [];
+  });
+  if (!S.scramble) S.scramble = {};
+}
+
+function setTier(tier) {
+  S.tier = tier;
+  document.getElementById('tierBeginner').className = 'tier-btn' + (tier==='beginner' ? ' active-beginner' : '');
+  document.getElementById('tierIntermediate').className = 'tier-btn' + (tier==='intermediate' ? ' active-intermediate' : '');
+  const hint = document.getElementById('sfHintBar');
+  if (tier==='beginner') hint.textContent = 'Drag the phrase chunks into the correct order to build a sentence for each word.';
+  else hint.textContent = 'Complete the sentence starter for each vocabulary word. Write your own ending!';
+  renderSentences(); autoSave();
+}
+
+function renderSentences() {
+  const list = document.getElementById('sfList'); if (!list) return;
+  list.innerHTML = '';
+  const tier = S.tier || 'beginner';
+
+  // Sync button state
+  document.getElementById('tierBeginner').className = 'tier-btn' + (tier==='beginner' ? ' active-beginner' : '');
+  document.getElementById('tierIntermediate').className = 'tier-btn' + (tier==='intermediate' ? ' active-intermediate' : '');
+
+  WORDS.forEach(w => {
+    const item = document.createElement('div'); item.className = 'sf-item';
+    // Header row
+    const wordRow = document.createElement('div'); wordRow.className = 'sf-word';
+    wordRow.innerHTML = `<span>${w.emoji}</span><span>${w.word}</span>`;
+    const isDone = tier==='beginner'
+      ? isScrambleCorrect(w.word)
+      : (S.sentences[w.word] && S.sentences[w.word].trim().length > 5);
+    if (isDone) { const badge=document.createElement('span'); badge.className='sf-completed-badge'; badge.textContent='✓ Done'; wordRow.appendChild(badge); }
+    item.appendChild(wordRow);
+
+    if (tier === 'beginner') {
+      renderScrambleItem(item, w);
+    } else {
+      renderWriteItem(item, w);
+    }
+    list.appendChild(item);
+  });
+}
+
+function renderScrambleItem(item, w) {
+  const phrases = SCRAMBLES[w.word];
+  const studentOrder = S.scramble[w.word] || [];
+  const inAnswer = new Set(studentOrder);
+  const inBank = shuffle(phrases.filter(p => !inAnswer.has(p)));
+
+  item.innerHTML += '<p class="scramble-instruction">Put the phrases in the correct order to make a sentence:</p>';
+
+  // Answer zone
+  const dropZone = document.createElement('div');
+  dropZone.className = 'scramble-dropzone' + (studentOrder.length===phrases.length ? ' has-answer' : '');
+  if (studentOrder.length === 0) {
+    const ph = document.createElement('span');
+    ph.style.cssText = 'color:#B4B2A9;font-size:13px;font-style:italic;';
+    ph.textContent = 'Drop phrases here in order →';
+    dropZone.appendChild(ph);
+  }
+  studentOrder.forEach((phrase, idx) => {
+    const chip = makeScrambleChip(phrase, w.word, 'answer', idx, phrases[0]);
+    dropZone.appendChild(chip);
+  });
+  dropZone.ondragover = e => { e.preventDefault(); dropZone.classList.add('drag-over'); };
+  dropZone.ondragleave = () => dropZone.classList.remove('drag-over');
+  dropZone.ondrop = e => {
+    e.preventDefault(); dropZone.classList.remove('drag-over');
+    if (!scrambleDrag || scrambleDrag.word !== w.word) return;
+    // Remove from source
+    if (scrambleDrag.fromZone === 'answer') {
+      S.scramble[w.word].splice(scrambleDrag.fromIdx, 1);
+    }
+    // Append to answer
+    if (!S.scramble[w.word].includes(scrambleDrag.phrase)) {
+      S.scramble[w.word].push(scrambleDrag.phrase);
+    }
+    scrambleDrag = null; renderSentences(); autoSave();
+  };
+  item.appendChild(dropZone);
+
+  // Correctness message
+  if (studentOrder.length === phrases.length) {
+    const msg = document.createElement('div'); msg.className = 'scramble-check show';
+    const correct = isScrambleCorrect(w.word);
+    msg.textContent = correct ? '✓ Correct! Great work.' : 'Not quite — try a different order.';
+    msg.style.color = correct ? '#3B6D11' : '#993C1D';
+    item.appendChild(msg);
+  }
+
+  // Bank
+  const bank = document.createElement('div'); bank.className = 'scramble-bank';
+  if (inBank.length === 0 && studentOrder.length < phrases.length) {
+    const ph = document.createElement('span'); ph.style.cssText='color:#B4B2A9;font-size:12px;';
+    ph.textContent='All phrases placed'; bank.appendChild(ph);
+  }
+  inBank.forEach(phrase => {
+    const chip = makeScrambleChip(phrase, w.word, 'bank', null, phrases[0]);
+    bank.appendChild(chip);
+  });
+  bank.ondragover = e => { e.preventDefault(); bank.classList.add('drag-over'); };
+  bank.ondragleave = () => bank.classList.remove('drag-over');
+  bank.ondrop = e => {
+    e.preventDefault(); bank.classList.remove('drag-over');
+    if (!scrambleDrag || scrambleDrag.word !== w.word) return;
+    if (scrambleDrag.fromZone === 'answer') {
+      S.scramble[w.word].splice(scrambleDrag.fromIdx, 1);
+    }
+    scrambleDrag = null; renderSentences(); autoSave();
+  };
+  item.appendChild(bank);
+}
+
+function makeScrambleChip(phrase, word, zone, idx, firstPhrase) {
+  const chip = document.createElement('div');
+  const isKeyword = phrase.toLowerCase().includes(word.toLowerCase()) || phrase === firstPhrase;
+  chip.className = 'phrase-chip' + (zone==='answer' ? ' in-answer' : '');
+  chip.textContent = phrase; chip.draggable = true;
+  chip.ondragstart = () => { scrambleDrag = { word, phrase, fromZone: zone, fromIdx: idx }; };
+  return chip;
+}
+
+function isScrambleCorrect(word) {
+  const correct = SCRAMBLES[word];
+  const student = S.scramble[word] || [];
+  if (student.length !== correct.length) return false;
+  return correct.every((p,i) => p === student[i]);
+}
+
+function renderWriteItem(item, w) {
+  const frameDiv = document.createElement('div'); frameDiv.className = 'sf-frame';
+  frameDiv.innerHTML = w.frame.replace(w.word, '<strong>'+w.word+'</strong>');
+  item.appendChild(frameDiv);
+  const ta = document.createElement('textarea');
+  ta.className = 'sf-input' + (S.sentences[w.word] ? ' filled' : '');
+  ta.placeholder = 'Complete the sentence here...'; ta.value = S.sentences[w.word] || '';
+  const count = document.createElement('div'); count.className = 'sf-char-count';
+  count.textContent = (S.sentences[w.word]||'').length + ' characters';
+  ta.oninput = e => { S.sentences[w.word]=e.target.value; count.textContent=e.target.value.length+' characters'; ta.className='sf-input'+(e.target.value?' filled':''); autoSave(); };
+  item.appendChild(ta); item.appendChild(count);
+}
+
+function checkSentences() {
+  const tier = S.tier || 'beginner';
+  let done = 0;
+  if (tier === 'beginner') {
+    WORDS.forEach(w => { if (isScrambleCorrect(w.word)) done++; });
+  } else {
+    WORDS.forEach(w => { if (S.sentences[w.word] && S.sentences[w.word].trim().length > 5) done++; });
+  }
+  const fb = document.getElementById('sfFeedback');
+  const needed = WORDS.length;
+  if (done >= needed) {
+    fb.textContent = tier==='beginner'
+      ? 'Excellent! You put all the sentences in the correct order. Click below to get your certificate!'
+      : 'Great work! You completed a sentence for every vocabulary word. Click below to get your certificate!';
+    fb.className='feedback show great'; S.done.sentences=true;
+    document.getElementById('btn5to6').style.display='inline-block';
+  } else {
+    const left = needed - done;
+    fb.textContent = tier==='beginner'
+      ? left+' sentence(s) still need to be in the correct order. Look at each sentence carefully — does it make sense?'
+      : left+' sentence(s) still need a response. Use the starter phrase to help you finish the sentence.';
+    fb.className='feedback show partial';
+  }
+  autoSave();
+}
+
+/* ════════════════════════════════
+   CERTIFICATE
+════════════════════════════════ */
+function drawCert() {
+  const canvas=document.getElementById('certCanvas'); if(!canvas)return;
+  const ctx=canvas.getContext('2d'), w=canvas.width, h=canvas.height;
+  const name=document.getElementById('studentNameCert').value.trim()||studentName||'Student';
+
+  ctx.clearRect(0,0,w,h);
+  ctx.fillStyle='#FAFAF8'; ctx.fillRect(0,0,w,h);
+
+  // Border
+  ctx.strokeStyle='#2C2C2A'; ctx.lineWidth=3; ctx.strokeRect(14,14,w-28,h-28);
+  ctx.strokeStyle='#D3D1C7'; ctx.lineWidth=1; ctx.strokeRect(22,22,w-44,h-44);
+
+  // Corner accents
+  const acc=(x,y,rx,ry)=>{ctx.strokeStyle='#2C2C2A';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x,y+ry);ctx.lineTo(x,y);ctx.lineTo(x+rx,y);ctx.stroke();};
+  acc(30,30,28,28); acc(w-30,30,-28,28); acc(30,h-30,28,-28); acc(w-30,h-30,-28,-28);
+
+  // Header stars
+  ['#534AB7','#185FA5','#3B6D11'].forEach((col,i)=>{ctx.fillStyle=col;ctx.font='16px sans-serif';ctx.textAlign='left';ctx.fillText('★',55+i*22,76);ctx.fillText('★',w-75+i*22,76);});
+
+  ctx.textAlign='center';
+  ctx.fillStyle='#2C2C2A'; ctx.font='500 12px DM Sans, sans-serif';
+  ctx.fillText('CERTIFICATE OF COMPLETION', w/2, 88);
+  ctx.strokeStyle='#D3D1C7'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(80,100); ctx.lineTo(w-80,100); ctx.stroke();
+
+  ctx.fillStyle='#2C2C2A'; ctx.font='400 14px DM Sans, sans-serif';
+  ctx.fillText('This certifies that', w/2, 136);
+  ctx.font='italic 400 32px Georgia, serif'; ctx.fillStyle='#3C3489';
+  ctx.fillText(name, w/2, 184);
+  const nm=ctx.measureText(name), ul=Math.min(nm.width+40,500);
+  ctx.strokeStyle='#CECBF6'; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(w/2-ul/2,193); ctx.lineTo(w/2+ul/2,193); ctx.stroke();
+
+  ctx.fillStyle='#2C2C2A'; ctx.font='400 14px DM Sans, sans-serif';
+  ctx.fillText('has successfully completed', w/2, 226);
+  ctx.font='600 18px DM Sans, sans-serif';
+  ctx.fillText('Unit 9B Vocabulary — Civil Rights Movement', w/2, 254);
+  ctx.font='400 13px DM Sans, sans-serif'; ctx.fillStyle='#5F5E5A';
+  ctx.fillText('ELL Level 1 · 10 vocabulary words · 5 activities completed', w/2, 278);
+
+  ctx.strokeStyle='#D3D1C7'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(60,295); ctx.lineTo(w-60,295); ctx.stroke();
+
+  // Vocab words summary
+  ctx.fillStyle='#2C2C2A'; ctx.font='600 12px DM Sans, sans-serif'; ctx.textAlign='center';
+  ctx.fillText('Vocabulary words learned:', w/2, 316);
+
+  const cols=2, rows=Math.ceil(WORDS.length/cols), colW=(w-160)/cols;
+  ctx.font='400 12px DM Sans, sans-serif'; ctx.textAlign='left';
+  WORDS.forEach((word,i)=>{
+    const col=i%cols, row=Math.floor(i/cols);
+    const x=80+col*colW, y=336+row*20;
+    ctx.fillStyle='#534AB7'; ctx.fillText('•', x, y);
+    ctx.fillStyle='#2C2C2A'; ctx.fillText(word.emoji+' '+word.word, x+12, y);
+  });
+
+  // Sample sentence
+  const sampleWord = WORDS.find(w=>S.sentences[w.word]&&S.sentences[w.word].trim().length>5);
+  if (sampleWord) {
+    ctx.strokeStyle='#D3D1C7'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(60,442); ctx.lineTo(w-60,442); ctx.stroke();
+    ctx.fillStyle='#5F5E5A'; ctx.font='400 11px DM Sans, sans-serif'; ctx.textAlign='center';
+    ctx.fillText('Student writing sample:', w/2, 462);
+    ctx.font='italic 400 13px Georgia, serif'; ctx.fillStyle='#3C3489';
+    const sent = '"' + S.sentences[sampleWord.word].trim().substring(0,100) + (S.sentences[sampleWord.word].length>100?'…':'"');
+    ctx.fillText(sent, w/2, 484);
+    ctx.font='400 11px DM Sans, sans-serif'; ctx.fillStyle='#888780';
+    ctx.fillText('(using "'+sampleWord.word+'")', w/2, 500);
+  }
+
+  const today=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  ctx.fillStyle='#888780'; ctx.font='400 11px DM Sans, sans-serif'; ctx.textAlign='center';
+  ctx.fillText('Completed: '+today, w/2, 540);
+  ctx.strokeStyle='#2C2C2A'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(w/2-90,588); ctx.lineTo(w/2+90,588); ctx.stroke();
+  ctx.fillStyle='#888780'; ctx.font='400 10px DM Sans, sans-serif';
+  ctx.fillText('Teacher Signature', w/2, 602);
+  ctx.fillStyle='#B4B2A9'; ctx.fillText('ELL Level 1 — Intermediate High School', w/2, 620);
+}
+
+function downloadCert() {
+  drawCert();
+  const canvas=document.getElementById('certCanvas');
+  const link=document.createElement('a');
+  const name=(document.getElementById('studentNameCert').value.trim()||studentName||'Student');
+  link.download='9B_Vocab_Certificate_'+name.replace(/\s+/g,'_')+'.png';
+  link.href=canvas.toDataURL('image/png'); link.click();
+}
+
+
+function welcomeReset() {
+  if (!confirm('Reset all progress?')) return;
+  try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
+  studentName = '';
+  S.section=1; S.emoji={}; S.def={}; S.fitb={}; S.sort={}; S.sentences={}; S.scramble={}; S.tier='beginner';
+  S.done={ emoji:false, def:false, fitb:false, sort:false, sentences:false };
+  document.getElementById('welcomeName').value='';
+  document.getElementById('savedNote').textContent='';
+  document.getElementById('nameError').style.display='none';
+}
+function resetAll() {
+  if (!confirm('Reset ALL progress and return to the welcome screen? This will clear everything for this lesson.')) return;
+  try { localStorage.removeItem(SAVE_KEY); } catch(e) {}
+  studentName = '';
+  S.section=1; S.emoji={}; S.def={}; S.fitb={}; S.sort={}; S.sentences={};
+  S.done={ emoji:false, def:false, fitb:false, sort:false, sentences:false };
+  document.getElementById('appShell').style.display='none';
+  document.getElementById('welcomeScreen').style.display='flex';
+  document.getElementById('welcomeName').value='';
+  document.getElementById('savedNote').textContent='';
+  document.getElementById('nameError').style.display='none';
+}
+</script>
+
+<div style="text-align:center;padding:28px 20px 40px;border-top:1px solid #D3D1C7;margin-top:40px;">
+  <button onclick="resetAll()" style="padding:6px 16px;border-radius:8px;border:1px solid #D3D1C7;background:white;color:#888780;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">
+    Reset all progress
+  </button>
+  <p style="font-size:11px;color:#B4B2A9;margin-top:6px;">For teacher use — clears everything and returns to the welcome screen.</p>
+</div>
+
+</body>
+</html>
