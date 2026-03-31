@@ -150,23 +150,24 @@ main { max-width: 980px; margin: 0 auto; padding: 22px 20px 80px; }
 .word-chip.used { opacity: 0.3; pointer-events: none; }
 
 /* ── PART 2: DEFINITION MATCH ── */
-.def-match-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
-.def-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: center; }
-.def-word-box { background: white; border: 1px solid #D3D1C7; border-radius: 10px; padding: 12px 16px; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-.def-word-box .word-emoji { font-size: 18px; }
-.def-drop { background: #F5F4F0; border: 2px dashed #D3D1C7; border-radius: 10px; padding: 12px 14px; font-size: 13px; color: #888780; min-height: 50px; display: flex; align-items: center; transition: border-color 0.15s, background 0.15s; line-height: 1.5; cursor: pointer; }
-.def-drop.drag-over { border-color: #378ADD; background: #E6F1FB33; }
-.def-drop.filled { background: #E6F1FB; border-color: #B5D4F4; border-style: solid; color: #0C447C; font-style: italic; font-size: 13px; }
-.def-drop.correct { background: #EAF3DE; border-color: #C0DD97; color: #27500A; }
-.def-drop.incorrect { background: #FAECE7; border-color: #F5C4B3; color: #712B13; }
-
-.def-bank { background: white; border: 1px solid #D3D1C7; border-radius: 10px; padding: 12px; margin-bottom: 14px; }
+.def-word-bank { background: white; border: 1px solid #D3D1C7; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; }
 .def-bank-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #888780; margin-bottom: 9px; }
 .def-chips { display: flex; flex-wrap: wrap; gap: 7px; min-height: 36px; }
-.def-chip { padding: 7px 13px; border-radius: 8px; font-size: 12px; border: 1px solid #D3D1C7; background: white; cursor: grab; user-select: none; line-height: 1.4; transition: box-shadow 0.12s, transform 0.12s; }
-.def-chip:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.09); transform: translateY(-1px); }
-.def-chip:active { cursor: grabbing; }
-.def-chip.used { opacity: 0.3; pointer-events: none; }
+.def-word-chip { padding: 8px 16px; border-radius: 100px; font-size: 13px; font-weight: 600; border: 1.5px solid #D3D1C7; background: white; cursor: pointer; user-select: none; display: flex; align-items: center; gap: 7px; transition: box-shadow 0.12s, transform 0.12s, background 0.12s, border-color 0.12s; }
+.def-word-chip:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.09); transform: translateY(-1px); }
+.def-word-chip.selected { background: #2C2C2A; color: white; border-color: #2C2C2A; transform: scale(1.05); }
+.def-word-chip.used { opacity: 0.28; pointer-events: none; }
+.def-match-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.def-def-row { background: white; border: 2px dashed #D3D1C7; border-radius: 10px; padding: 13px 16px; font-size: 14px; color: #888780; cursor: pointer; line-height: 1.6; transition: border-color 0.15s, background 0.15s; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.def-def-row:hover { border-color: #B5D4F4; background: #E6F1FB22; }
+.def-def-row.ready { border-color: #378ADD; background: #E6F1FB33; color: #2C2C2A; }
+.def-def-row.filled { border-style: solid; border-color: #B5D4F4; background: #E6F1FB11; }
+.def-def-row.correct { border-color: #C0DD97; background: #EAF3DE22; }
+.def-def-row.incorrect { border-color: #F5C4B3; background: #FAECE711; }
+.def-def-text { flex: 1; }
+.def-matched-word { font-size: 12px; font-weight: 600; padding: 3px 12px; border-radius: 100px; background: #E6F1FB; color: #0C447C; border: 1px solid #B5D4F4; white-space: nowrap; flex-shrink: 0; display: flex; align-items: center; gap: 5px; }
+.def-matched-word.correct { background: #EAF3DE; color: #27500A; border-color: #C0DD97; }
+.def-matched-word.incorrect { background: #FAECE7; color: #712B13; border-color: #F5C4B3; }
 
 /* ── PART 3: FILL IN THE BLANK ── */
 .fitb-bank { background: white; border: 1px solid #D3D1C7; border-radius: 10px; padding: 12px 14px; margin-bottom: 14px; }
@@ -242,7 +243,7 @@ main { max-width: 980px; margin: 0 auto; padding: 22px 20px 80px; }
 
 @media (max-width: 600px) {
   header { padding: 11px 14px; }
-  .def-row { grid-template-columns: 1fr; }
+
   main { padding: 12px 12px 60px; }
   .welcome-card { padding: 28px 18px; }
   .emoji-grid { grid-template-columns: repeat(2, 1fr); }
@@ -365,10 +366,10 @@ main { max-width: 980px; margin: 0 auto; padding: 22px 20px 80px; }
           <span class="research-tag">Deepening meaning — receptive recognition (Beck et al., 2002)</span>
         </div>
       </div>
-      <div class="hint-bar">Drag each definition from the box below and drop it next to the correct word.</div>
-      <div class="def-bank">
-        <div class="def-bank-label">Definitions — drag to the correct word</div>
-        <div class="def-chips" id="defBank"></div>
+      <div class="hint-bar">Click a word in the bank to select it (it turns dark), then click the definition it matches. Click a matched definition to undo it.</div>
+      <div class="def-word-bank">
+        <div class="def-bank-label">Words — click to select, then click the matching definition</div>
+        <div class="def-chips" id="defWordBank"></div>
       </div>
       <div class="def-match-grid" id="defMatchGrid"></div>
       <div class="controls">
@@ -716,49 +717,74 @@ function resetEmoji() {
 }
 
 /* ════════════════════════════════
-   PART 2: DEFINITION MATCH
+   PART 2: DEFINITION MATCH (click to select, click to place)
 ════════════════════════════════ */
-let defDrag = null;
+let defSelected = null; // the word currently selected from the bank
 
 function buildDefs() {
   WORDS.forEach(w => { if (!S.def[w.word]) S.def[w.word] = null; });
 }
 
 function renderDefs() {
-  const bank = document.getElementById('defBank');
+  const bank = document.getElementById('defWordBank');
   const grid = document.getElementById('defMatchGrid');
   if (!bank || !grid) return;
   bank.innerHTML=''; grid.innerHTML='';
 
-  const placed = new Set(Object.values(S.def).filter(Boolean));
+  // Words placed so far: word -> definition
+  const usedWords = new Set(Object.keys(S.def).filter(k => S.def[k] !== null));
+
+  // Word bank — terms as clickable chips
   shuffle(WORDS).forEach(w => {
     const chip = document.createElement('div');
-    chip.className='def-chip'+(placed.has(w.def)?' used':'');
-    chip.textContent=w.def; chip.draggable=true;
-    chip.ondragstart=()=>{defDrag=w.def;};
+    const isUsed = usedWords.has(w.word);
+    chip.className = 'def-word-chip' + (isUsed ? ' used' : '') + (defSelected===w.word ? ' selected' : '');
+    chip.innerHTML = `<span>${w.emoji}</span><span>${w.word}</span>`;
+    chip.onclick = () => {
+      if (isUsed) return;
+      defSelected = defSelected === w.word ? null : w.word;
+      renderDefs();
+    };
     bank.appendChild(chip);
   });
 
-  WORDS.forEach(w => {
+  // Definitions listed as click targets — shuffled once via WORDS order, but we shuffle the display
+  shuffle([...WORDS]).forEach(w => {
     const row = document.createElement('div');
-    row.className='def-row';
-    const wordBox = document.createElement('div');
-    wordBox.className='def-word-box';
-    wordBox.innerHTML=`<span class="word-emoji">${w.emoji}</span><span>${w.word}</span>`;
-    const drop = document.createElement('div');
-    drop.className='def-drop'+(S.def[w.word]?' filled':'');
-    drop.textContent=S.def[w.word]||'Drop definition here...';
-    drop.ondragover=e=>{e.preventDefault();drop.classList.add('drag-over');};
-    drop.ondragleave=()=>drop.classList.remove('drag-over');
-    drop.ondrop=e=>{
-      e.preventDefault(); drop.classList.remove('drag-over');
-      if(!defDrag)return;
-      Object.keys(S.def).forEach(k=>{if(S.def[k]===defDrag)S.def[k]=null;});
-      S.def[w.word]=defDrag; defDrag=null; renderDefs(); autoSave();
+    // Find which word (if any) is matched to this definition
+    const matchedWord = Object.keys(S.def).find(k => S.def[k] === w.def) || null;
+    let cls = 'def-def-row';
+    if (matchedWord) cls += ' filled';
+    else if (defSelected) cls += ' ready';
+    row.className = cls;
+
+    const defText = document.createElement('div');
+    defText.className = 'def-def-text';
+    defText.textContent = w.def;
+    row.appendChild(defText);
+
+    if (matchedWord) {
+      const matchedW = WORDS.find(x => x.word === matchedWord);
+      const badge = document.createElement('div');
+      badge.className = 'def-matched-word';
+      badge.innerHTML = `<span>${matchedW.emoji}</span><span>${matchedWord}</span>`;
+      row.appendChild(badge);
+    }
+
+    row.onclick = () => {
+      if (defSelected) {
+        // If this def already has a word matched, swap it back first
+        Object.keys(S.def).forEach(k => { if (S.def[k] === w.def) S.def[k] = null; });
+        S.def[defSelected] = w.def;
+        defSelected = null;
+        renderDefs(); autoSave();
+      } else if (matchedWord) {
+        // Click a matched definition to unset it
+        S.def[matchedWord] = null;
+        renderDefs(); autoSave();
+      }
     };
-    // click to remove
-    drop.onclick=()=>{if(S.def[w.word]){S.def[w.word]=null;renderDefs();autoSave();}};
-    row.appendChild(wordBox); row.appendChild(drop); grid.appendChild(row);
+    grid.appendChild(row);
   });
 }
 
@@ -779,7 +805,7 @@ function checkDefs() {
 }
 
 function resetDefs() {
-  WORDS.forEach(w=>S.def[w.word]=null); renderDefs();
+  WORDS.forEach(w=>S.def[w.word]=null); defSelected=null; renderDefs();
   document.getElementById('defFeedback').className='feedback';
   document.getElementById('defScore').style.display='none'; autoSave();
 }
@@ -1264,13 +1290,70 @@ function resetAll() {
   document.getElementById('savedNote').textContent='';
   document.getElementById('nameError').style.display='none';
 }
+
+/* ════════════════════════════════
+   TEACHER MODE
+════════════════════════════════ */
+let teacherMode = false;
+const TEACHER_PASS = 'agk101';
+
+function enableTeacherMode() {
+  const pass = prompt('Enter teacher password:');
+  if (pass === null) return;
+  if (pass !== TEACHER_PASS) { alert('Incorrect password.'); return; }
+  teacherMode = true;
+  document.getElementById('teacherBanner').style.display = 'flex';
+  document.getElementById('teacherJumpBar').style.display = 'flex';
+  ['btn1to2','btn2to3','btn3to4','btn4to5','btn5to6'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'inline-block';
+  });
+}
+
+function disableTeacherMode() {
+  teacherMode = false;
+  document.getElementById('teacherBanner').style.display = 'none';
+  document.getElementById('teacherJumpBar').style.display = 'none';
+  ['btn1to2','btn2to3','btn3to4','btn4to5','btn5to6'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const doneMap = { btn1to2: S.done.emoji&&S.done.def, btn2to3: S.done.def, btn3to4: S.done.fitb, btn4to5: S.done.sort, btn5to6: S.done.sentences };
+    if (!doneMap[id]) el.style.display = 'none';
+  });
+}
+
+function teacherGoTo(n) {
+  goTo(n);
+  ['btn1to2','btn2to3','btn3to4','btn4to5','btn5to6'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.style.display = 'inline-block';
+  });
+}
 </script>
 
-<div style="text-align:center;padding:28px 20px 40px;border-top:1px solid #D3D1C7;margin-top:40px;">
-  <button onclick="resetAll()" style="padding:6px 16px;border-radius:8px;border:1px solid #D3D1C7;background:white;color:#888780;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">
-    Reset all progress
-  </button>
-  <p style="font-size:11px;color:#B4B2A9;margin-top:6px;">For teacher use — clears everything and returns to the welcome screen.</p>
+<!-- Teacher banner -->
+<div id="teacherBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#2C2C2A;color:#F5F4F0;padding:10px 24px;align-items:center;justify-content:space-between;gap:12px;z-index:300;flex-wrap:wrap;border-top:2px solid #854F0B;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span style="font-size:11px;background:#854F0B;color:#FAEEDA;padding:3px 10px;border-radius:100px;font-weight:600;letter-spacing:0.05em;">TEACHER MODE</span>
+    <span style="font-size:13px;color:#B4B2A9;">All sections unlocked — students cannot see this bar.</span>
+  </div>
+  <div id="teacherJumpBar" style="display:none;align-items:center;gap:6px;flex-wrap:wrap;">
+    <span style="font-size:11px;color:#888780;">Jump to:</span>
+    <button onclick="teacherGoTo(1)" style="padding:4px 12px;border-radius:100px;border:1px solid #444441;background:transparent;color:#D3D1C7;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">1 Match</button>
+    <button onclick="teacherGoTo(2)" style="padding:4px 12px;border-radius:100px;border:1px solid #444441;background:transparent;color:#D3D1C7;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">2 Definitions</button>
+    <button onclick="teacherGoTo(3)" style="padding:4px 12px;border-radius:100px;border:1px solid #444441;background:transparent;color:#D3D1C7;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">3 Fill Blank</button>
+    <button onclick="teacherGoTo(4)" style="padding:4px 12px;border-radius:100px;border:1px solid #444441;background:transparent;color:#D3D1C7;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">4 Sort</button>
+    <button onclick="teacherGoTo(5)" style="padding:4px 12px;border-radius:100px;border:1px solid #444441;background:transparent;color:#D3D1C7;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">5 Sentences</button>
+    <button onclick="teacherGoTo(6)" style="padding:4px 12px;border-radius:100px;border:1px solid #444441;background:transparent;color:#D3D1C7;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">&#9733; Certificate</button>
+  </div>
+  <button onclick="disableTeacherMode()" style="padding:4px 14px;border-radius:100px;border:1px solid #554433;background:transparent;color:#FAC775;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">Exit teacher mode</button>
+</div>
+
+<div style="text-align:center;padding:28px 20px 56px;border-top:1px solid #D3D1C7;margin-top:40px;">
+  <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+    <button onclick="resetAll()" style="padding:6px 16px;border-radius:8px;border:1px solid #D3D1C7;background:white;color:#888780;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">Reset all progress</button>
+    <button onclick="enableTeacherMode()" style="padding:6px 16px;border-radius:8px;border:1px solid #D3D1C7;background:white;color:#888780;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;">Teacher mode</button>
+  </div>
+  <p style="font-size:11px;color:#B4B2A9;margin-top:6px;">For teacher use only.</p>
 </div>
 
 </body>
